@@ -26,11 +26,6 @@
       "autoria": "Mestre Yoda"
     },
     {
-      "id": "9f3c",
-      "conteudo": "Você não é todo mundo!",
-      "autoria": "Mãe"
-    },
-    {
       "id": "6a2b",
       "conteudo": "Foi sem querer querendo!",
       "autoria": "Chaves"
@@ -61,9 +56,14 @@
       "autoria": "Seu Madruga"
     },
     {
-      "id": "4d2e",
-      "conteudo": "Se eu for aí e achar, eu esfrego na sua cara!",
-      "autoria": "Mãe"
+      "id": "95a6",
+      "conteudo": "          Foi o que ela disse",
+      "autoria": "Michael Scott"
+    },
+    {
+      "id": "8c3b",
+      "conteudo": "          As flores que desabrocham durante as dificuldades são as mais raras e belas de todas.",
+      "autoria": "Fa Mulan"
     }
   ]
 }
