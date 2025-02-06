@@ -1,27 +1,27 @@
-const URL_BASE = "http://localhost:3000";
+const URL_BASE = "http://localhost:3000"
 
 const api = {
-    async buscarPensamentos() {
-      try {
-        const response = await axios.get(`${URL_BASE}/pensamentos`)
-        return await response.data
-      }
-      catch {
-        alert('Erro ao buscar pensamentos')
-        throw error
-      }
-    },
+  async buscarPensamentos() {
+    try {
+      const response = await axios.get(`${URL_BASE}/pensamentos`)
+      return await response.data
+    }
+    catch {
+      alert('Erro ao buscar pensamentos')
+      throw error
+    }
+  },
 
-    async salvarPensamento(pensamento) {
-      try {
-        const response = await axios.post(`${URL_BASE}/pensamentos`, pensamento)
-        return await response.data
-      }
-      catch {
-        alert('Erro ao Salvar pensamentos')
-        throw error
-      }
-    },
+  async salvarPensamento(pensamento) {
+    try {
+      const response = await axios.post(`${URL_BASE}/pensamentos`, pensamento)
+      return await response.data
+    }
+    catch {
+      alert('Erro ao salvar pensamento')
+      throw error
+    }
+  },
 
   async buscarPensamentoPorId(id) {
     try {
@@ -40,7 +40,7 @@ const api = {
       return await response.data
     }
     catch {
-      alert('Erro ao Editar pensamentos')
+      alert('Erro ao editar pensamento')
       throw error
     }
   },
@@ -53,7 +53,23 @@ const api = {
       alert('Erro ao excluir um pensamento')
       throw error
     }
+  },
+
+  async buscarPensamentoPorTermo (termo) {
+    try {
+      const pensamentos = await this.buscarPensamentos()
+      const termoEmMinusculas = termo.toLowerCase()
+  
+      const pensamentosFiltrados = pensamentos.filter(pensamento => {
+        return(pensamento.conteudo.toLowerCase().includes(termoEmMinusculas) || 
+        pensamento.autoria.toLowerCase().includes(termoEmMinusculas))
+      })
+      return pensamentosFiltrados
+    } catch (error) {
+      alert("Erro ao filtrar pensamentos")
+      throw error
+    }
   }
 }
 
-  export default api
+export default api
