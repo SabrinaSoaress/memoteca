@@ -36,6 +36,7 @@ const api = {
 
   async editarPensamento(pensamento) {
     try {
+      // PUT: envia todos os dados do recurso;
       const response = await axios.put(`${URL_BASE}/pensamentos/${pensamento.id}`, pensamento)
       return await response.data
     }
@@ -67,6 +68,17 @@ const api = {
       return pensamentosFiltrados
     } catch (error) {
       alert("Erro ao filtrar pensamentos")
+      throw error
+    }
+  },
+
+  async atualizarFavorito(id, favorito) {
+    try {
+      // PATCH: envia apenas as alterações.
+      const response = await axios.patch(`${URL_BASE}/pensamentos/${id}`, {favorito})
+      return response.data
+    } catch (error) {
+      alert("Erro ao atualizar Favorito")
       throw error
     }
   }

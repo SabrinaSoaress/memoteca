@@ -83,8 +83,25 @@ const ui = {
     iconeExcluir.alt = "Excluir"
     botaoExcluir.appendChild(iconeExcluir)
 
+    const botaoFavorito = document.createElement("button")
+    botaoFavorito.classList.add("botao-favorito")
+    botaoFavorito.onclick = async () => {
+      try {
+        await api.atualizarFavorito(pensamento.id, !pensamento.favorito)
+        ui.renderizarPensamentos()
+      } catch (error) {
+        alert("erro ao atualizar Favorito")
+      }
+    }
+
+    const iconeFavorito = document.createElement("img")
+    iconeFavorito.src = pensamento.favorito ? "assets/imagens/icone-favorito.png" : "assets/imagens/icone-favorito_outline.png"
+    iconeFavorito.alt = "favorito"
+    botaoFavorito.appendChild(iconeFavorito)
+
     const icones = document.createElement("div")
     icones.classList.add("icones")
+    icones.appendChild(botaoFavorito)
     icones.appendChild(botaoEditar)
     icones.appendChild(botaoExcluir)
 
