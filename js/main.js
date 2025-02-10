@@ -1,6 +1,26 @@
 import ui from "./ui.js"
 import api from "./api.js"
 
+
+function removerEspacos(string) {
+  return string.replaceAll(/\s+/g, '')
+}
+
+
+//regex - Expressão Regular é uma sequência de caracteres que define um padrão de busca. 
+const regexConteudo = /^[A-Za-z\s]{10,}$/
+
+function validarAutoria(autoria) {
+  return regexAutoria.test(autoria)
+}
+
+const regexAutoria = /^[a-zA-Z]{3,15}$/
+
+function validarConteudo(conteudo) {
+  return regexConteudo.test(conteudo)
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   ui.renderizarPensamentos()
 
@@ -19,6 +39,19 @@ async function manipularSubmissaoFormulario(event) {
   const conteudo = document.getElementById("pensamento-conteudo").value
   const autoria = document.getElementById("pensamento-autoria").value
   const data = document.getElementById("pensamento-data").value
+
+  const conteudoSemEspaco = removerEspacos(conteudo)
+  const autoriaSemEspaco = removerEspacos(autoria)
+
+  if (!validarAutoria(autoriaSemEspaco)) {
+    alert("É permitida a inclusão de letras e entre 3 e 15 caracteres sem espaços")
+    return
+  }
+
+  if (!validarConteudo(conteudoSemEspaco)) {
+    alert("É permitida a inclusão apenas de letras e espaços com no mínimo 10 caracteres")
+    return
+  }
 
   if (!validarData(data)) {
     alert("Não é permitido o cadastro de Datas Futuras!")

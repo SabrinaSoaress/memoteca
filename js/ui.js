@@ -69,6 +69,8 @@ const ui = {
         timeZone: 'UTC'
     }
     const dataFormatada = pensamento.data.toLocaleDateString('pt-BR', options)
+    const dataComRegex = dataFormatada.replace(/^(\w)/, (match) => match.toUpperCase())
+
     pensamentoData.textContent = dataFormatada
     pensamentoData.classList.add("pensamento-data")
 
